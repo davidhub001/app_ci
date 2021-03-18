@@ -18,11 +18,29 @@ class Essai extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+    public function __construct(){
+        parent::__construct();
+        $this->load->model('Utilisateur');
+    }
 	public function index()
 	{
-		$this->load->view('essai.html');
+		$this->load->view('essai');
 	}
     public function affiche(){
-        echo 'test null';
+        $data['query']=$this->Utilisateur->getById();
+        $this->load->view('essai',$data);
+    }
+    public function insert(){
+        $valeur=array('nom'=>'moi',
+                    'prenom'=>'ausi');
+        $this->Utilisateur->insert($valeur);
+    }
+    public function update(){
+        $valeur=array('nom'=>'moi',
+                    'prenom'=>'ausi');
+        $this->Utilisateur->update($valeur,2);
+    }
+    public function delete(){
+        $this->Utilisateur->delete(3);
     }
 }
