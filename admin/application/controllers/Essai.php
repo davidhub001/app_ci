@@ -24,7 +24,7 @@ class Essai extends CI_Controller {
     }
 	public function index()
 	{
-		$this->load->view('essai');
+		echo "mot _de passe";
 	}
     public function affiche(){
         $data['query']=$this->Utilisateur->getById();
